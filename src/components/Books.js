@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getBooks } from '../firebase-config';
+import { deleteBook, getBooks } from '../firebase-config';
 import Book from './Book';
 
 const Books = () => {
@@ -14,16 +14,23 @@ const Books = () => {
       console.log(err.message);
     }
   }, []);
+  const handleDelete = id => {
+    console.log(id);
+    deleteBook(id);
+  };
   return (
     <div className='container'>
       <table>
         <thead>
-          <th>Title</th>
-          <th>Author</th>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Actions</th>
+          </tr>
         </thead>
         <tbody>
           {books.map(book => (
-            <Book {...book} />
+            <Book key={book.id} {...book} handleDelete={handleDelete} />
           ))}
         </tbody>
       </table>

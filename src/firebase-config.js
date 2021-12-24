@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, getDocs, getFirestore } from 'firebase/firestore';
 const firebaseConfig = {
   apiKey: 'AIzaSyA2iWseBFmQG4Ui2MmKuOthW6TMNhGDn0E',
   authDomain: 'fir-tutorial-ff4de.firebaseapp.com',
@@ -15,10 +15,10 @@ export const app = initializeApp(firebaseConfig);
 // init services
 const db = getFirestore();
 
-// collection ref
+// * collection ref
 const colRef = collection(db, 'books');
 
-// get collection data
+// * get collection data
 
 export const getBooks = async () => {
   const snapshot = await getDocs(colRef);
@@ -28,4 +28,17 @@ export const getBooks = async () => {
   // ?get id
   //console.log(snapshot.docs[0].id);
   return books;
+};
+// * adding docs
+export const addBook = async ({ title, author }) => {
+  await addDoc(colRef, {
+    title,
+    author
+  });
+};
+
+// * deleting docs
+export const deleteBook = async id => {
+  const docRef = doc(db, 'books', id);
+  await deleteDoc(docRef);
 };
