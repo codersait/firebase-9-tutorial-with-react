@@ -13,7 +13,7 @@
 body {
   font-family: Poppins, sans-serif;
   margin: 0;
-  font-size: 1.1em;
+  /* font-size: 1.1em; */
   background: var(--bg-color);
 }
 ul,
@@ -32,9 +32,9 @@ ul {
 
 /* layout */
 .page-title {
-  font-size: 1em;
-  color: var(--heading-color);
-  display: inline-block;
+  /* font-size: 1rem; */
+  color: var(--highlight-color);
+  text-align: center;
 }
 .btn {
   background: #fff;
@@ -82,4 +82,8 @@ textarea {
 }
 h1 {
   font-weight: 400;
+}
+
+button.delete {
+  margin-right: 1rem;
 }
