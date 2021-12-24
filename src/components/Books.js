@@ -21,21 +21,10 @@ const Books = () => {
     const books = await getBooks();
     setBooks(books);
   };
-  const handleSubmit = async e => {
-    console.log('e', e);
-    // console.log('book', book);
-    e.preventDefault();
-    try {
-      // await addBook(book);
-      const books = await getBooks();
-      setBooks(books);
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
+
   return (
     <div className='container'>
-      <AddBook handleSubmit={handleSubmit} />
+      <AddBook />
       <table>
         <thead>
           <tr>
