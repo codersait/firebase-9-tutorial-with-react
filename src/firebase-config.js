@@ -1,12 +1,12 @@
 import { initializeApp } from 'firebase/app';
 import { addDoc, collection, deleteDoc, doc, getDocs, getFirestore } from 'firebase/firestore';
 const firebaseConfig = {
-  apiKey: 'AIzaSyA2iWseBFmQG4Ui2MmKuOthW6TMNhGDn0E',
-  authDomain: 'fir-tutorial-ff4de.firebaseapp.com',
-  projectId: 'fir-tutorial-ff4de',
-  storageBucket: 'fir-tutorial-ff4de.appspot.com',
-  messagingSenderId: '334587997053',
-  appId: '1:334587997053:web:ecd987a9ca9ea3d3e4fa14'
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID
 };
 
 // init firebase
