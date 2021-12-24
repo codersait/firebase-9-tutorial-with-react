@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { deleteBook, getBooks } from '../firebase-config';
+import { addBook, deleteBook, getBooks } from '../firebase-config';
+import AddBook from './AddBook';
 import Book from './Book';
 
 const Books = () => {
@@ -14,12 +15,27 @@ const Books = () => {
       console.log(err.message);
     }
   }, []);
-  const handleDelete = id => {
+  const handleDelete = async id => {
     console.log(id);
-    deleteBook(id);
+    await deleteBook(id);
+    const books = await getBooks();
+    setBooks(books);
+  };
+  const handleSubmit = async e => {
+    console.log('e', e);
+    // console.log('book', book);
+    e.preventDefault();
+    try {
+      // await addBook(book);
+      const books = await getBooks();
+      setBooks(books);
+    } catch (err) {
+      console.log(err.message);
+    }
   };
   return (
     <div className='container'>
+      <AddBook handleSubmit={handleSubmit} />
       <table>
         <thead>
           <tr>
