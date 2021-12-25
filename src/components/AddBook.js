@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { addBook } from '../firebase-config';
 
-const AddBook = () => {
+const AddBook = ({ updateState }) => {
   const [book, setBook] = useState({});
   const handleChange = e => {
     const { name, value } = e.target;
@@ -11,6 +11,7 @@ const AddBook = () => {
     e.preventDefault();
     try {
       await addBook(book);
+      updateState();
       setBook({ title: '', author: '' });
       console.log(book);
 

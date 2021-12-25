@@ -22,9 +22,14 @@ const Books = () => {
     setBooks(books);
   };
 
+  const updateState = async () => {
+    const books = await getBooks();
+    setBooks(books);
+  };
+
   return (
     <div className='container'>
-      <AddBook />
+      <AddBook updateState={updateState} />
       <table>
         <thead>
           <tr>
